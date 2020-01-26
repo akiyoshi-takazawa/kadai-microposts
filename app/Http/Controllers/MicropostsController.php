@@ -36,6 +36,7 @@ class MicropostsController extends Controller
         return back();
     }
     
+    
     public function destroy($id)
     {
         $micropost = _App\Micropost::find($id);
