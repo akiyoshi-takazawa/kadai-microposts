@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class MicropostsController extends Controller
 {
     public function index()
@@ -43,7 +44,6 @@ class MicropostsController extends Controller
             $micropost->deleate();
         }
     }
-    
-    
+
     
 }
