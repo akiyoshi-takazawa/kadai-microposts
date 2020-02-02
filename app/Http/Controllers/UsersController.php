@@ -32,6 +32,40 @@ class UsersController extends Controller
 
         return view('users.show', $data);
     }
+    // getでusers/id/editにアクセスされた場合の「更新画面表示処理」
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit', [
+            'user' => $user,
+        ]);
+    }
+    
+    //　user情報更新処理
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:20',
+        ]);
+        
+        $user = User::find($id);
+        $user->name = $request->name;    
+        $user->save();
+
+        return back();
+    }
+    
+    // 「削除処理」
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/');
+    }
+    
+    // フォロー機能　
     
     public function followings($id)
     {
